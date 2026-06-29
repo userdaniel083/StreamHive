@@ -1,0 +1,597 @@
+/* Volledige StreamHive UI Transformatie conform Mockup 1.HOMEPAGE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        sans-serif;
+}
+
+body {
+    background-color: #0b0b0c; /* Diepdonkere gaming-vibe */
+    color: #efeff1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- STRUCTUUR: HOOFDMENU (HEADER) --- */
+.main-header {
+    background-color: #18181b; /* Solide donkere menubalk achtergrond */
+    height: 64px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.9),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Linkerkant van het menu: Hamburger + Logo */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.menu-toggle-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.menu-toggle-btn:hover {
+    background-color: #2f2f35;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+}
+.logo span {
+    color: #e50914; /* Accentkleur rood */
+}
+
+/* Midden van het menu: Gecentreerde Zoekbalk-groep */
+.header-center {
+    flex: 0 1 480px;
+}
+
+.search-container {
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    background-color: #2f2f35;
+    border-radius: 6px 0 0 6px;
+    border: 1px solid #3f3f46;
+}
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 8px 14px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-btn {
+    background-color: #3f3f46;
+    border: none;
+    color: #ffffff;
+    padding: 0 16px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.search-btn:hover {
+    background-color: #52525b;
+}
+
+/* Rechterkant van het menu: Acties + Login profiel */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.header-icon-link {
+    color: #efeff1;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.header-icon-link:hover {
+    background-color: #2f2f35;
+}
+
+.auth-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-circle {
+    width: 32px;
+    height: 32px;
+    background-color: #e50914;
+    color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-nav-primary {
+    background-color: #e50914;
+    color: #ffffff;
+    border: none;
+    padding: 7px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-nav-primary:hover {
+    background-color: #b80710;
+}
+
+.btn-nav-outline {
+    background-color: #2f2f35;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 4px;
+    border: 1px solid #3f3f46;
+}
+.btn-nav-outline:hover {
+    background-color: #3f3f46;
+}
+
+/* --- APP INTERNE INDELING (Zijbalk aansluiting) --- */
+.app-container {
+    display: flex;
+    margin-top: 64px; /* Exact onder het hoofdmenu vallen */
+    flex: 1;
+}
+
+.sidebar-menu {
+    width: 240px;
+    background-color: #1f1f23; /* Iets lichtere contrastkleur voor zijbalk menu */
+    padding: 14px 8px;
+    position: fixed;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-heading {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    padding: 8px 12px 4px 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: #efeff1;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.15s;
+}
+.sidebar-item:hover {
+    background-color: #2f2f35;
+}
+.sidebar-item.active {
+    background-color: #3a3a40;
+    color: #e50914;
+    font-weight: 600;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background-color: #2f2f35;
+    margin: 8px 0;
+}
+
+/* Rechter Content Frame */
+.content-viewport {
+    flex: 1;
+    margin-left: 240px; /* Netjes openschuiven naast zijbalk menu */
+    padding: 24px;
+    background-color: #0b0b0c;
+}
+
+/* --- GRID EN CARDS VAN VIDEOPLATFORM --- */
+.block-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.videos-layout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+}
+
+.stream-card {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.stream-thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.stream-thumbnail video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.stream-details {
+    display: flex;
+    gap: 10px;
+}
+
+.stream-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #3a3a40;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.stream-metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stream-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.stream-creator,
+.stream-stats {
+    font-size: 12px;
+    color: #adadb8;
+}
+
+/* Forms & Footer */
+.video-upload-card {
+    background-color: #18181b;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.input-field-group {
+    margin-bottom: 12px;
+}
+.input-field-group label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #adadb8;
+    margin-bottom: 4px;
+}
+.input-field-group input,
+.input-field-group textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: #0b0b0c;
+    border: 1px solid #3f3f46;
+    border-radius: 4px;
+    color: white;
+}
+
+.btn-action-submit {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.app-footer {
+    background-color: #18181b;
+    padding: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #53535f;
+    margin-left: 240px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.message.error,
+.error {
+    background-color: rgba(229, 9, 20, 0.12);
+    color: #ff9aa0;
+    border: 1px solid rgba(229, 9, 20, 0.35);
+}
+
+.message.success,
+.success {
+    background-color: rgba(46, 204, 113, 0.12);
+    color: #6bff9a;
+    border: 1px solid rgba(46, 204, 113, 0.35);
+}
+
+.auth-page {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.auth-card {
+    width: min(440px, 100%);
+    background-color: #18181b;
+    border: 1px solid #2f2f35;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.auth-card h1 {
+    margin-bottom: 8px;
+}
+
+.auth-subtitle,
+.page-subtitle {
+    color: #adadb8;
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.auth-switch {
+    margin-top: 16px;
+    color: #adadb8;
+    font-size: 14px;
+}
+
+.auth-switch a,
+.login-notice a,
+.stream-title:hover {
+    color: #e50914;
+}
+
+.page-title {
+    color: #ffffff;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.hero-card,
+.empty-state {
+    background-color: #18181b;
+    border: 1px solid #2f2f35;
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.hero-card h1,
+.empty-state h1 {
+    margin-bottom: 12px;
+}
+
+.hero-card p,
+.empty-state p {
+    color: #adadb8;
+    line-height: 1.6;
+}
+
+.hero-actions,
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.hero-actions a,
+.detail-actions a {
+    text-decoration: none;
+}
+
+.stream-title {
+    text-decoration: none;
+}
+
+.upload-page-card {
+    max-width: 760px;
+}
+
+.input-field-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.video-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 24px;
+    align-items: start;
+}
+
+.video-player-card,
+.comments-card {
+    background-color: #18181b;
+    border: 1px solid #2f2f35;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.video-detail-player {
+    width: 100%;
+    max-height: 70vh;
+    background-color: #000;
+    border-radius: 8px;
+}
+
+.video-detail-meta {
+    margin-top: 16px;
+}
+
+.video-detail-meta h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.detail-stats {
+    color: #adadb8;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.video-description {
+    background-color: #0f0f12;
+    border-radius: 8px;
+    padding: 14px;
+    margin-top: 14px;
+    color: #efeff1;
+    line-height: 1.6;
+}
+
+.btn-danger {
+    background-color: #b80710;
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-danger:hover {
+    background-color: #8f050c;
+}
+
+.comment-form {
+    margin: 16px 0 22px;
+}
+
+.comments-list-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-item {
+    border-bottom: 1px solid #2f2f35;
+    padding-bottom: 12px;
+}
+
+.comment-item strong {
+    display: block;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.comment-item span {
+    display: block;
+    color: #72727c;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.comment-item p {
+    color: #efeff1;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .header-center {
+        display: none;
+    }
+
+    .sidebar-menu {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+    }
+
+    .app-container {
+        flex-direction: column;
+    }
+
+    .content-viewport,
+    .app-footer {
+        margin-left: 0;
+    }
+
+    .video-detail-layout {
+        grid-template-columns: 1fr;
+    }
+}
